@@ -1,3 +1,3 @@
 using namespace std;
 
-enum Modes {INSERT,VIEW};
+enum Mode {INSERT,VIEW};
