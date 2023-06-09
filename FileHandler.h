@@ -1,9 +1,11 @@
+#include <stdlib.h>
+
 #ifndef FileHandler_H
 #define FileHandler_H
 
 class FileHandler{
 	private:
-		char * buffer;
+		std::vector<char> buffer;
 		fstream file;
 	public:
 		openFile();
