@@ -2,7 +2,7 @@
 
 #ifndef FileHandler_H
 #define FileHandler_H
-
+#endif
 class FileHandler{
 	private:
 		std::vector<char> buffer;
@@ -14,3 +14,4 @@ class FileHandler{
 		writeBufToFile();
 
 }
+
