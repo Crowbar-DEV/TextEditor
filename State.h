@@ -1,18 +1,20 @@
 #include <fstream>
+#include <iostream>
+#include "Mode.cpp"
 
 class State {
 	private:
-		Mode::Mode currentMode;
+		Modes currentMode;
 	
 	protected:
 		std::string timeStamp;
 		bool upToDate;
 		std::string file;
-		fstream fileStream;
+		std::fstream fileStream;
 	
 	public:
 		State();
-		virtual void setMode(Mode::Mode newMode);
-		virtual Mode::Mode getMode();
+		virtual void setMode(Modes newMode);
+		virtual Modes getMode();
 
-}
+};
