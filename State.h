@@ -4,7 +4,7 @@
 
 class State {
 	private:
-		Modes currentMode;
+		Mode currentMode;
 	
 	protected:
 		std::string timeStamp;
@@ -14,7 +14,7 @@ class State {
 	
 	public:
 		State();
-		virtual void setMode(Modes newMode);
-		virtual Modes getMode();
+		virtual void setMode(Mode newMode);
+		virtual Mode getMode();
 
 };
