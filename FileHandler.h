@@ -13,11 +13,11 @@ class FileHandler{
 	public:
 		//when we open a file, we want the contents
 		//of the file, so we return a vec
-		std::vector<char> openFile();
-		std::fstream * createFile();
+		virtual std::vector<char> openFile();
+		virtual std::fstream * createFile();
 
-		void writeBufToFile();
-		void closeFile();
+		virtual void writeBufToFile();
+		virtual void closeFile();
 
 };
 
