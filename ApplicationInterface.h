@@ -11,7 +11,7 @@ class ApplicationInterface {
 		FileHandlerInterface fileHandler;
 		UIInterface ui;
 	public:
-		Application(StateInterface state, FileHandlerInterface fileHandler, UIInterface ui);
+		ApplicationInterface(StateInterface state, FileHandlerInterface fileHandler, UIInterface ui);
 };
 
 #endif
