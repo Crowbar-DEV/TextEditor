@@ -22,8 +22,12 @@ class Application {
 			buffer = fileHandler.createBuffer(fileName);
 			
 			char c;
-			c = buffer.sbumpc();
-			std::cout << c; 
+			c = buffer->sbumpc();
+			while(c != EOF){
+				
+				c = buffer->sbumpc();
+				std::cout<< c;
+			} 
 		}
 
 		// Runs the main loop of the program
