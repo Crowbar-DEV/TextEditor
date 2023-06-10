@@ -11,13 +11,10 @@ class StateInterface {
 		Mode currentMode;
 	
 	protected:
-		std::string timeStamp;
 		bool upToDate;
-		std::string file;
-		std::fstream fileStream;
 	
 	public:
-		State();
+		StateInterface();
 		virtual void setMode(Mode newMode);
 		virtual Mode getMode();
 
