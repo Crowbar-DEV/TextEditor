@@ -2,6 +2,9 @@
 #include <fstream>
 #include <vector>
 
+#ifndef FILEHANDLERINTERFACE_H
+#define FILEHANDLERINTERFACE_H
+
 class FileHandlerInterface{
 	private:
 		std::fstream currentFile;
@@ -18,4 +21,6 @@ class FileHandlerInterface{
 		//virtual void closeFile();
 
 };
+
+#endif
 
