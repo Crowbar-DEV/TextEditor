@@ -7,7 +7,7 @@
 
 class FileHandlerInterface{
 	private:
-		std::fstream currentFile;
+		std::fstream* currentFile;
 	public:
 		//store the fileBuf for the file into private
 		//member buffer
