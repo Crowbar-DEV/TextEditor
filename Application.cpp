@@ -4,11 +4,14 @@
 
 class Application {
 	private:
-		StateInterface state;
-		FileHandlerInterface fileHandler;
-		UIInterface ui;
+		StateInterface* state;
+		FileHandlerInterface* fileHandler;
+		UIInterface* ui;
 	public:
-		Application(StateInterface state, FileHandlerInterface fileHandler, UIInterface ui) {
+		Application(FileHandlerInterface* fileHandler){
+			this->fileHandler = fileHandler;
+		}
+		Application(StateInterface* state, FileHandlerInterface* fileHandler, UIInterface* ui) {
 			this->state = state;
 			this->fileHandler = fileHandler;
 			this->ui = ui;

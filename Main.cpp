@@ -1,9 +1,15 @@
-#include "FileHandlerInterface.h"
-#include "StateInterface.h"
 #include "Application.cpp"
 #include "FileHandler.cpp"
+#include "State.cpp"
+#include "UI.cpp"
 
 int main(){
+
+	
+	Application* application = new Application(new FileHandler());
+
+
+	////////// TEST AREA //////////
 	std::fstream file;
 
 	char buf[1024];
@@ -15,5 +21,6 @@ int main(){
 	file.get(c);
 
 	std::cout << c;
+	////////// TEST AREA //////////
 	return 0;
 }
