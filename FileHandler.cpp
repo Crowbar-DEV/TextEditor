@@ -2,10 +2,15 @@
 
 class FileHandler : FileHandlerInterface {
 	private:
-		std::fstream currentFile;
+		std::fstream * currentFile;
 	public:
-		void storeFileInfo(std::string name) {
-			// TODO complete this
+		std::filebuf * createBuffer(std::string name) {
+			//objective is to open a file, and return a pointer
+			//to its buffer
+			currentFile->open(name);
+			std::filebuf * buffer = currentFile->rdbuf();
+			return buffer;	
+
 		}
 
 };
