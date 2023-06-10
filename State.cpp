@@ -10,7 +10,7 @@ class State : StateInterface {
 
 	public:
 		State() {
-			currentMode = Mode.VIEW;
+			currentMode = VIEW;
 			upToDate = true; // TODO not sure if this is correct
 		}
 		void setMode(Mode newMode) {

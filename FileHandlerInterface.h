@@ -11,7 +11,7 @@ class FileHandlerInterface{
 	public:
 		//store the fileBuf for the file into private
 		//member buffer
-		virtual void storeFileInfo(std::string name);
+		std::filebuf * createBuffer(std::string name);
 
 
 		//virtual std::fstream * createFile();

@@ -1,6 +1,6 @@
 #include "FileHandlerInterface.h"
 
-class FileHandler : FileHandlerInterface {
+class FileHandler : public FileHandlerInterface {
 	private:
 		std::fstream * currentFile;
 	public:
