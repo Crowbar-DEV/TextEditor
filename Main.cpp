@@ -3,9 +3,8 @@
 #include <format>
 
 int main(){
-	std::fstream file ("test.txt", std::ios::ate);
-	int end = file.tellp();	
-	std::cout << end<< "\n";
+	std::fstream file ("test.txt");
+
 	char arr[end];
 
 	file.seekg(0);
