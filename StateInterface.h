@@ -1,12 +1,12 @@
 #include <fstream>
 #include <iostream>
 
-#ifndef State_H
-#define State_H
+#ifndef StateInterface_H
+#define StateInterface_H
 
 enum Mode {INSERT,VIEW};
 
-class State {
+class StateInterface {
 	private:
 		Mode currentMode;
 	
