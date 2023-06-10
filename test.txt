@@ -1,3 +1,42 @@
-test
-test
+application
+    //state machine is defined by current mode (INSERT,VIEW)
+    state
+        enum Mode
+            -INSERT
+            -VIEW
+        FileStatus
+            -bool upToDate
+            -timeStamp
+        CurrentFile
+            -string File
+            -fstream fileStream
+    ui
+        int currentLine
+        int currentColumn
+    event loop
+        refreshRate(60 hz)
+        set keypresses (key : enum keyFunction)
+    file handler
+        char buffer
+        open file
+        write buffer to file
+        close file
+        create/write file
 
+base set of GLOBAL keys that apply to all modes
+
+set of keys for VIEW
+set of keys for INSERT (keys wont have function, just append ascii value to buffer)
+
+when you open a file, all the contents get pushed into a buffer,
+when you write to the file, the buffer simply gets written back to 
+the file.
+
+
+interfaces for
+state
+ui
+event loop
+file handler
+
+each o
