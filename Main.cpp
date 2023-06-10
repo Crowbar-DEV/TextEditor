@@ -1,6 +1,7 @@
 #include "FileHandlerInterface.h"
 #include "StateInterface.h"
 #include "ApplicationInterface.h"
+#include "FileHandler.cpp"
 
 int main(){
 	std::fstream file;
