@@ -1,6 +1,10 @@
 #include <fstream>
 #include <iostream>
-#include "Mode.cpp"
+
+#ifndef State_H
+#define State_H
+
+enum Mode {INSERT,VIEW};
 
 class State {
 	private:
@@ -18,3 +22,5 @@ class State {
 		virtual Mode getMode();
 
 };
+
+#endif
