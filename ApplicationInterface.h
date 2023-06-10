@@ -2,10 +2,10 @@
 #include "FileHandler.h"
 #include "UI.h"
 
-#ifndef Application_H
-#define FileHandler_H
+#ifndef ApplicationInterface_H
+#define ApplicationInterface_H
 
-class Application {
+class ApplicationInterface {
 	private:
 		State state;
 		FileHandler fileHandler;
