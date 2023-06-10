@@ -1,6 +1,6 @@
 #include "FileHandlerInterface.h"
 #include "StateInterface.h"
-#include "ApplicationInterface.h"
+#include "Application.cpp"
 #include "FileHandler.cpp"
 
 int main(){

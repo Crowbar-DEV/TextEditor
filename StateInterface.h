@@ -1,6 +1,3 @@
-#include <fstream>
-#include <iostream>
-
 #ifndef StateInterface_H
 #define StateInterface_H
 
@@ -14,7 +11,6 @@ class StateInterface {
 		bool upToDate;
 	
 	public:
-		StateInterface();
 		virtual void setMode(Mode newMode);
 		virtual Mode getMode();
 
