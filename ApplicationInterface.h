@@ -1,6 +1,6 @@
-#include "State.h"
+#include "StateInterface.h"
 #include "FileHandler.h"
-#include "UI.h"
+#include "UIInterface.h"
 
 #ifndef ApplicationInterface_H
 #define ApplicationInterface_H
