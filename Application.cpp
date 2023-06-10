@@ -7,6 +7,7 @@ class Application {
 		StateInterface* state;
 		FileHandlerInterface* fileHandler;
 		UIInterface* ui;
+		std::filebuf * buffer;
 	public:
 		Application(FileHandlerInterface* fileHandler){
 			this->fileHandler = fileHandler;
@@ -19,7 +20,13 @@ class Application {
 		
 		// Sets up the application
 		void setup() {
-
+			std::string fileName = "test.txt";
+			std::filebuf * buffer;
+			buffer = fileHandler.createBuffer(fileName);
+			
+			char c;
+			c = buffer.sbumpc();
+			std::cout << c; 
 		}
 
 		// Runs the main loop of the program
