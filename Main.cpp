@@ -4,43 +4,16 @@
 #include <format>
 
 int main(){
-	std::fstream file ("test.txt");
+	std::fstream file;
 
-	char arr[end];
+	char buf[1024];
 
-	file.seekg(0);
+	file.rdbuf()->pubsetbuf(buf, sizeof(buf));
+	file.open("test.txt");
 
-	std::fstream buf;
-
-	file>>arr;
-
-	buf<<arr;
-	
-	file.close();
 	char c;
-	for(int i = 0; i< 50; i++){
-		buf.get(c);
-		std::cout<< c;
-	}
+	file.get(c);
 
-	//std::cout<< file.tellg()<< "\n" ;
-	//file.close();
-	//std::fstream file ("test.txt");
-	//std::filebuf * fileBuf = file.rdbuf();
-	//std::filebuf * restoreBuf;
-	//std::system("clear");
-	//std::cout <<fileBuf;	
-	//std::vector<char> mem;
-	//char c = fileBuf->sbumpc();
-
-	//while(c != EOF){
-	//	mem.push_back(c);
-	//	c = fileBuf->sbumpc();
-	//}
-	//file.close();
-	//
-	//for(char c : mem){
-	//	std::cout<<c<<"\n";
-	//}
+	std::cout << c;
 	return 0;
 }
