@@ -7,11 +7,11 @@
 
 class ApplicationInterface {
 	private:
-		State state;
-		FileHandler fileHandler;
-		UI ui;
+		StateInterface state;
+		FileHandlerInterface fileHandler;
+		UIInterface ui;
 	public:
-		Application(State state, FileHandler fileHandler, UI ui);
+		Application(StateInterface state, FileHandlerInterface fileHandler, UIInterface ui);
 };
 
 #endif
