@@ -1,0 +1,14 @@
+Buffer Handling
+===============================================================
+Instead of storing the file buffer into a char vector
+we can just store it as the actual filebuf object. That
+way we can make use of the filebuf methods which make 
+manipulation very easy.
+
+We can also replace the standard output with this filebuf, making
+sure to save standard output before replacement, then we can
+update the replaced stdout every loop, and it should just write
+to the terminal, as the terminal just displays stdout.
+
+at start of program, we open file, we must make sure to close it
+upon termination.
