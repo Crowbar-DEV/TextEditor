@@ -2,22 +2,20 @@
 #include <fstream>
 #include <vector>
 
-#ifndef FileHandler_H
-#define FileHandler_H
-
 class FileHandler{
 	private:
-		std::vector<char> buffer;
-		std::fstream file;
+		std::fstream currentFile;
 	public:
-		//when we open a file, we want the contents
-		//of the file, so we return a vec
-		virtual std::vector<char> openFile();
-		virtual std::fstream * createFile();
+		//store the fileBuf for the file into private
+		//member buffer
+		virtual void storeFileInfo(std::string name);
 
-		virtual void writeBufToFile();
-		virtual void closeFile();
+
+		//virtual std::fstream * createFile();
+
+		//virtual void writeBufToFile();
+		
+		//virtual void closeFile();
 
 };
 
-#endif
