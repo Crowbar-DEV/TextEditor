@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 
-class FileHandler{
+class FileHandlerInterface{
 	private:
 		std::fstream currentFile;
 	public:
