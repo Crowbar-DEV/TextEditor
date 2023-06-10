@@ -22,7 +22,7 @@ class Application {
 		void setup() {
 			std::string fileName = "test.txt";
 			std::filebuf * buffer;
-			buffer = fileHandler.createBuffer(fileName);
+			buffer = fileHandler->createBuffer(fileName);
 			
 			char c;
 			c = buffer->sbumpc();
