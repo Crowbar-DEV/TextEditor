@@ -23,15 +23,6 @@ void Editor::cursesInit()
     refresh();
 
     this->borderWindow = newwin(LINES, COLS, 0, 0);
-    box(this->borderWindow,0,0);
-    int center = COLS /2;
-    wmove(this->borderWindow,0,center - (this->fileName.length() / 2)-1);
-    std::string top = "";
-    top.push_back('|');
-    top.append(this->fileName);
-    top.push_back('|');
-    wprintw(this->borderWindow, top.c_str());
-
     this->textWindow = subwin(this->borderWindow, LINES-2, COLS-2, 1, 1);
     //print file content and move cursor to start
     wrefresh(this->borderWindow);

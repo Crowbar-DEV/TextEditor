@@ -1,7 +1,30 @@
 #include "Editor.cpp"
+#include "Editor.hpp"
 #include <curses.h>
+#include <string>
+#include <unordered_map>
+
+std::string line = "";
+std::string col = "";
+
+std::unordered_map<int, std::string> modes;
+
 
 void loop(char &c, Editor * e){
+    box(e->borderWindow,0,0);
+    mvwaddstr(e->borderWindow, LINES-1, COLS-10, modes[e->mode].c_str());
+    int center = COLS /2;
+    wmove(e->borderWindow,0,1);
+    std::string top = "";
+    top.push_back('|');
+    top.append(e->fileName);
+    top.push_back('|');
+    wprintw(e->borderWindow, top.c_str());
+    line = std::to_string(e->getLine());
+    col = std::to_string(e->getCol());
+    mvwaddstr(e->borderWindow, LINES-1, 2, line.append(",").append(col).c_str());
+    wrefresh(e->borderWindow);
+    wrefresh(e->textWindow);
     c = getch();
     switch(e->mode){
         case VIEW:
@@ -27,6 +50,8 @@ void loop(char &c, Editor * e){
                 case 'i':
                     e->setMode(INSERT);
                     break;
+                default:
+                    break;
             }
             break;
         case INSERT:
@@ -39,11 +64,12 @@ void loop(char &c, Editor * e){
                     break;
             }
     }
-    wrefresh(e->textWindow);
 }
 
 int main(int argc, char** argv)
 {
+    modes[EDITOR_MODE::INSERT] = "INSERT";
+    modes[EDITOR_MODE::VIEW] = "VIEW";
     //setup editor object
     std::string fileName = argv[1];
     Editor * e = new Editor(fileName);
