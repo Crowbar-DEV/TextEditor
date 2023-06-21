@@ -42,10 +42,10 @@ void loop(char &c, Editor * e){
     wrefresh(e->textWindow);
 }
 
-int main()
+int main(int argc, char** argv)
 {
     //setup editor object
-    std::string fileName = "test1.txt";
+    std::string fileName = argv[1];
     Editor * e = new Editor(fileName);
 
     char c;
