@@ -36,7 +36,7 @@ void Editor::cursesInit()
 void Editor::moveCursorUp()
 {
     //if above line is less than, move cursor to end
-    if(this->lines[this->getLine()-1].length() < this->getCol()){
+    if(this->lines[this->getLine()-1].length() < this->getCol() && this->getLine() != 0){
         this->setCursorPos(this->getLine()-1,this->lines[this->getLine()-1].length());
     }
     else if(this->getLine() > 0) this->setCursorPos(this->getLine() - 1, this->getCol());
