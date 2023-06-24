@@ -36,3 +36,14 @@ void Document::writeFile(std::string fileName)
     file << content.rdbuf();
     file.close();
 }
+
+void Document::insertChar(char c, int line, int column)
+{
+    std::string temp(1,c);
+    this->buffer[line].insert(column,temp);
+}
+
+void Document::deleteChar(int line, int column)
+{
+    this->buffer[line].erase(column,1);
+}
