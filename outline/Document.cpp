@@ -6,6 +6,17 @@
 #include <sstream>
 #include "Document.hpp"
 
+Document::Document(std::string fileName)
+{
+    this->name = fileName;
+    readFile(fileName);
+}
+
+Document::~Document()
+{
+    delete this;
+}
+
 void Document::readFile(std::string fileName)
 {
     std::ifstream file(fileName.c_str());
