@@ -1,4 +1,2 @@
 class Selection {
-	public:
-		Selection();
 };

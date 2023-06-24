@@ -1,4 +1,2 @@
 class Cursor {
-	public:
-		Cursor();
 };

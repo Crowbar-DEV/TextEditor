@@ -1,9 +1,9 @@
 #include <cstdint>
 #include <vector>
-#include "Cursor.cpp"
-#include "UI.cpp"
-#include "Selection.cpp"
-#include "Document.cpp"
+#include "Document.hpp"
+#include "Cursor.hpp"
+#include "Selection.hpp"
+#include "UI.hpp"
 
 class Editor{
     private:
@@ -14,6 +14,6 @@ class Editor{
     public:
         void setCurrentDoc();
 
-        void update();
+        void loop();
         
 };
