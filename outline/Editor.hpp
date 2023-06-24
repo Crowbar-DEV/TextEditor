@@ -11,9 +11,14 @@ class Editor{
         Cursor                  cursor;
         UI                      ui;
         Selection               selection;
+				int currentDocIndex;
     public:
         void setCurrentDoc();
 
         void loop();
         
+				void moveCursorUp();
+				void moveCursorDown();
+				void moveCursorLeft();
+				void moveCursorRight();
 };
