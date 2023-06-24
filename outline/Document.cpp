@@ -6,6 +6,17 @@
 #include <sstream>
 #include "Document.hpp"
 
+Document::Document(std::string fileName)
+{
+    this->name = fileName;
+    readFile(fileName);
+}
+
+Document::~Document()
+{
+    delete this;
+}
+
 void Document::readFile(std::string fileName)
 {
     std::ifstream file(fileName.c_str());
@@ -35,4 +46,15 @@ void Document::writeFile(std::string fileName)
 
     file << content.rdbuf();
     file.close();
+}
+
+void Document::insertChar(char c, int line, int column)
+{
+    std::string temp(1,c);
+    this->buffer[line].insert(column,temp);
+}
+
+void Document::deleteChar(int line, int column)
+{
+    this->buffer[line].erase(column,1);
 }

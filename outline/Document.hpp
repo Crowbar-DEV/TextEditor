@@ -2,8 +2,11 @@
 #include <vector>
 class Document{
     private:
+        std::string                     name;
         std::vector<std::string>        buffer;
     public:
+        Document(std::string fileName);
+        ~Document();
         //read file into buffer
         void readFile(std::string fileName);
         //write buffer to file
