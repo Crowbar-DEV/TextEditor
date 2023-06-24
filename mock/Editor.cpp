@@ -1,5 +1,6 @@
 #include "Editor.hpp"
 #include <curses.h>
+#include <string>
 #include <utility>
 
     //constructor: store lines, and full file string
@@ -21,7 +22,7 @@ void Editor::cursesInit()
     noecho();
     keypad(stdscr,true);
     refresh();
-
+    
     this->borderWindow = newwin(LINES, COLS, 0, 0);
     this->textWindow = subwin(this->borderWindow, LINES-2, COLS-2, 1, 1);
     //print file content and move cursor to start
@@ -34,11 +35,18 @@ void Editor::cursesInit()
 
 void Editor::moveCursorUp()
 {
-    if(this->getLine() > 0) this->setCursorPos(this->getLine() - 1, this->getCol());
+    //if above line is less than, move cursor to end
+    if(this->lines[this->getLine()-1].length() < this->getCol()){
+        this->setCursorPos(this->getLine()-1,this->lines[this->getLine()-1].length());
+    }
+    else if(this->getLine() > 0) this->setCursorPos(this->getLine() - 1, this->getCol());
 }
 void Editor::moveCursorDown()
 {
-    if(this->getLine() < this->totalLines) this->setCursorPos(this->getLine() + 1, this->getCol());
+    if(this->lines[this->getLine()+1].length() < this->getCol()){
+        this->setCursorPos(this->getLine()+1,this->lines[this->getLine()+1].length());
+    }
+    else if(this->getLine() < this->totalLines-1) this->setCursorPos(this->getLine() + 1, this->getCol());
 }
 void Editor::moveCursorLeft()
 {
@@ -98,8 +106,18 @@ void Editor::insert(char c)
 }
 void Editor::deleteChar()
 {
-    this->lines[this->getLine()].erase(this->getCol(),1);
-    wdelch(this->textWindow);
+    if(this->lines[this->getLine()].length() > 0){
+        this->lines[this->getLine()].erase(this->getCol(),1);
+        wdelch(this->textWindow);
+    }
+}
+void Editor::backspace()
+{
+    if(this->getCol() != 0 || this->lines[this->getLine()].length() > 0){
+        this->setCursorPos(this->getLine(), this->getCol()-1);
+        this->lines[this->getLine()].erase(this->getCol(),1);
+        wdelch(this->textWindow);
+    }
 }
 
 void Editor::setupFile(std::string &name)
@@ -133,4 +151,19 @@ void Editor::writeFile(std::string &name)
 
     file << content.rdbuf();
     file.close();
+}
+
+void Editor::updateUI()
+{
+    box(this->borderWindow,0,0);
+    mvwaddstr(this->borderWindow, LINES-1, COLS-10, std::string("|").append(this->modes[this->mode]).append("|").c_str());
+    wmove(this->borderWindow,0,1);
+    std::string top = "";
+    top.push_back('|');
+    top.append(this->fileName);
+    top.push_back('|');
+    wprintw(this->borderWindow, top.c_str());
+    mvwaddstr(this->borderWindow, LINES-1, 2, std::string("|").append(std::to_string(this->getLine())).append(",").append(std::to_string(this->getCol())).append("|").c_str());
+    wrefresh(this->borderWindow);
+    wrefresh(this->textWindow);
 }

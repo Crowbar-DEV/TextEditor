@@ -11,6 +11,7 @@
 #include <sstream>
 #include <string>
 #include <ostream>
+#include <unordered_map>
 
 typedef enum EDITOR_MODE{
     INSERT,
@@ -32,6 +33,8 @@ class Editor{
         Editor(std::string &name);
         ~Editor();
 
+        std::unordered_map<int, std::string> modes;
+
         void moveCursorUp(); //
         void moveCursorDown(); //
         void moveCursorLeft();
@@ -50,7 +53,10 @@ class Editor{
         void syncBuffers(); //
 
         void insert(char c); //
-        void deleteChar();
+        void deleteChar(); //
+        void backspace(); //
+
+        void updateUI();
 
         void writeFile(std::string &name); //
         void setupFile(std::string &name); //
