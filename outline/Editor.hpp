@@ -11,6 +11,9 @@ class Editor{
         Cursor                  cursor;
         UI                      ui;
         Selection               selection;
+
+        int                     currentTermColumns=COLS;
+        int                     currentTermHeight=LINES;
     public:
         void setCurrentDoc();
 
