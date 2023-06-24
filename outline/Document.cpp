@@ -6,17 +6,25 @@
 #include <sstream>
 #include "Document.hpp"
 
+//Constructor:
+//sets file name and reads file into buffer
 Document::Document(std::string fileName)
 {
     this->name = fileName;
     readFile(fileName);
 }
 
+//Deconstructor:
+//deletes the object
 Document::~Document()
 {
     delete this;
 }
 
+//readFile:
+//params-> string fileName
+//mutates-> this->buffer
+//reads file fileName into buffer
 void Document::readFile(std::string fileName)
 {
     std::ifstream file(fileName.c_str());
@@ -33,6 +41,9 @@ void Document::readFile(std::string fileName)
     this->buffer = buf;
 }
 
+//writeFile:
+//params-> string fileName
+//writes buffer to file fileName
 void Document::writeFile(std::string fileName)
 {
     std::string s = "";
@@ -48,13 +59,37 @@ void Document::writeFile(std::string fileName)
     file.close();
 }
 
+//insertChar:
+//params-> char c, int line, int column
+//mutates-> this->buffer
+//inserts a character at position column within the line
 void Document::insertChar(char c, int line, int column)
 {
     std::string temp(1,c);
     this->buffer[line].insert(column,temp);
 }
 
+//deleteChar:
+//params-> int line, int column
+//mutates-> this->buffer
+//deletes a character at position column within the line
 void Document::deleteChar(int line, int column)
 {
     this->buffer[line].erase(column,1);
 }
+
+//getLineLength:
+//params-> int line
+//returns-> number of characters within a certain line
+int Document::getLineLength(int line)
+{
+    return this->buffer[line].length();
+}
+
+//getLines:
+//return-> number of lines within the document
+int Document::getLines()
+{
+    return this->buffer.size();
+}
+
