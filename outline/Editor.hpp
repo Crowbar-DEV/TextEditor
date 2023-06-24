@@ -1,5 +1,9 @@
 #include <cstdint>
 #include <vector>
+#include "Cursor.cpp"
+#include "UI.cpp"
+#include "Selection.cpp"
+#include "Document.cpp"
 
 class Editor{
     private:
