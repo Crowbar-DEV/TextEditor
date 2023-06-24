@@ -14,6 +14,7 @@ Editor::Editor(std::string &name)
     this->cursesInit();
 }
 
+//EDITOR/APP//
 void Editor::cursesInit()
 {
     //curses setup
@@ -33,34 +34,51 @@ void Editor::cursesInit()
     wrefresh(this->textWindow);
 }
 
+//CURSOR//
 void Editor::moveCursorUp()
 {
-    //if above line is less than, move cursor to end
-    if(this->lines[this->getLine()-1].length() < this->getCol() && this->getLine() != 0){
+		if(this->getLine() > 0) {
+			if(this->lines[this->getLine()-1].length() < this->getCol() && this->getLine() != 0){
         this->setCursorPos(this->getLine()-1,this->lines[this->getLine()-1].length());
-    }
-    else if(this->getLine() > 0) this->setCursorPos(this->getLine() - 1, this->getCol());
+    	}
+    	else {
+			 	this->setCursorPos(this->getLine() - 1, this->getCol());
+			}
+		}
 }
+
+//CURSOR//
 void Editor::moveCursorDown()
 {
-    if(this->lines[this->getLine()+1].length() < this->getCol()){
+		if(this->getLine() < this->totalLines-1) {
+			if(this->lines[this->getLine()+1].length() < this->getCol()){
         this->setCursorPos(this->getLine()+1,this->lines[this->getLine()+1].length());
-    }
-    else if(this->getLine() < this->totalLines-1) this->setCursorPos(this->getLine() + 1, this->getCol());
+    	}
+    	else {
+				this->setCursorPos(this->getLine() + 1, this->getCol());
+			}
+		}
 }
+
+//CURSOR//
 void Editor::moveCursorLeft()
 {
     if(this->getCol() > 0) this->setCursorPos(this->getLine(), this->getCol() - 1);
 }
+
+//CURSOR//
 void Editor::moveCursorRight()
 {
     if(this->getCol() < this->getLineChars()) this->setCursorPos(this->getLine(), this->getCol() + 1);
 }
 
+//CURSOR//
 const std::pair<int, int> Editor::getCursorPos()
 {
     return this->cursorPos;
 }
+
+//CURSOR//
 void Editor::setCursorPos(int line, int col)
 {
     this->cursorPos.first = line;
@@ -68,24 +86,31 @@ void Editor::setCursorPos(int line, int col)
     wmove(this->textWindow,line,col);
 }
 
+//EDITOR//
 void Editor::setMode(EDITOR_MODE mode)
 {
     this->mode = mode;
 }
 
+//CURSOR//
 const int Editor::getLine()
 {
     return this->cursorPos.first;
 }
+
+//CURSOR//
 const int Editor::getCol()
 {
     return this->cursorPos.second;
 }
+
+//DOCUMENT//
 const int Editor::getLineChars()
 {
     return this->lines[getLine()].length();
 }
 
+//EDITOR//
 void Editor::syncBuffers()
 {
     std::string content = "";
@@ -96,6 +121,7 @@ void Editor::syncBuffers()
     this->content = content;
 }
 
+//EDITOR//
 void Editor::insert(char c)
 {
     std::string s = "";
@@ -104,6 +130,8 @@ void Editor::insert(char c)
     winsch(this->textWindow,c);
     this->setCursorPos(this->getLine(), this->getCol()+1);
 }
+
+//EDITOR//
 void Editor::deleteChar()
 {
     if(this->lines[this->getLine()].length() > 0){
@@ -111,6 +139,8 @@ void Editor::deleteChar()
         wdelch(this->textWindow);
     }
 }
+
+//EDITOR//
 void Editor::backspace()
 {
     if(this->getCol() != 0 || this->lines[this->getLine()].length() > 0){
@@ -120,6 +150,7 @@ void Editor::backspace()
     }
 }
 
+//DOCUMENT//
 void Editor::setupFile(std::string &name)
 {
     this->fileName = name;
@@ -141,6 +172,8 @@ void Editor::setupFile(std::string &name)
 
     file.close();
 }
+
+//DOCUMENT//
 void Editor::writeFile(std::string &name)
 {
     this->syncBuffers();
@@ -153,6 +186,7 @@ void Editor::writeFile(std::string &name)
     file.close();
 }
 
+//UI//
 void Editor::updateUI()
 {
     box(this->borderWindow,0,0);
