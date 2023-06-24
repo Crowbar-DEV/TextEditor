@@ -35,18 +35,25 @@ void Editor::cursesInit()
 
 void Editor::moveCursorUp()
 {
-    //if above line is less than, move cursor to end
-    if(this->lines[this->getLine()-1].length() < this->getCol() && this->getLine() != 0){
+		if(this->getLine() > 0) {
+			if(this->lines[this->getLine()-1].length() < this->getCol() && this->getLine() != 0){
         this->setCursorPos(this->getLine()-1,this->lines[this->getLine()-1].length());
-    }
-    else if(this->getLine() > 0) this->setCursorPos(this->getLine() - 1, this->getCol());
+    	}
+    	else {
+			 	this->setCursorPos(this->getLine() - 1, this->getCol());
+			}
+		}
 }
 void Editor::moveCursorDown()
 {
-    if(this->lines[this->getLine()+1].length() < this->getCol()){
+		if(this->getLine() < this->totalLines-1) {
+			if(this->lines[this->getLine()+1].length() < this->getCol()){
         this->setCursorPos(this->getLine()+1,this->lines[this->getLine()+1].length());
-    }
-    else if(this->getLine() < this->totalLines-1) this->setCursorPos(this->getLine() + 1, this->getCol());
+    	}
+    	else {
+				this->setCursorPos(this->getLine() + 1, this->getCol());
+			}
+		}
 }
 void Editor::moveCursorLeft()
 {
